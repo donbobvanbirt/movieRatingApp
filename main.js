@@ -29,6 +29,9 @@ let App = React.createClass({
       Movies: [...Movies, movie]
     }, () => console.log('state:', this.state));
 
+    title.value = "";
+    image.value = "";
+
     console.log('movie:', movie);
     // console.log('state:', this.state);
   },
@@ -59,7 +62,11 @@ let App = React.createClass({
     // let { newTweet, tweets } = this.state;
     let { Movies } = this.state;
 
-    let movieList = Movies.map((item, index) => {
+    let sortedMovies = Movies.sort((a, b) => {
+      return a.score - b.score;
+    })
+
+    let movieList = sortedMovies.reverse().map((item, index) => {
       return (
         <tr key={item.id}>
           <td><img src={item.image} alt={item.title} className="pic"/></td>
