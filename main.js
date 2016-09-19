@@ -72,8 +72,8 @@ let App = React.createClass({
           <td><img src={item.image} alt={item.title} className="pic"/></td>
           <td>{item.title}</td>
           <td>{item.score}</td>
-          <td><button onClick={() => {this.voteUp(index)}} className="btn btn-sm btn-default"><i className="fa fa-angle-double-up"></i></button></td>
-          <td><button onClick={() => {this.voteDown(index)}} className="btn btn-sm btn-default"><i className="fa fa-angle-double-down"></i></button></td>
+          <td><button onClick={() => {this.voteUp(index)}} className="btn btn-sm btn-default"><i className="fa fa-thumbs-o-up"></i></button></td>
+          <td><button onClick={() => {this.voteDown(index)}} className="btn btn-sm btn-default"><i className="fa fa-thumbs-o-down"></i></button></td>
         </tr>
       )
     })
@@ -85,7 +85,7 @@ let App = React.createClass({
         <form onSubmit={this.submitForm}>
           <div className="form-group">
             <label htmlFor="newMovie">Title</label>
-            <input ref="title" type="text" className="form-control" />
+            <input ref="title" type="text" className="form-control" required/>
           </div>
           <div className="form-group">
             <label htmlFor="image">Image URL:</label>
@@ -98,10 +98,10 @@ let App = React.createClass({
           <thead>
             <tr>
               <th></th>
-              <th>Title</th>
-              <th>Rating</th>
-              <th>Vote Up</th>
-              <th>Vote Down</th>
+              <th><i className="fa fa-ticket"></i> Title</th>
+              <th><i className="fa fa-star"></i> Rating</th>
+              <th><i className="fa fa-thumbs-o-up"></i> Vote Up</th>
+              <th><i className="fa fa-thumbs-o-down"></i> Vote Down</th>
             </tr>
           </thead>
           <tbody>
