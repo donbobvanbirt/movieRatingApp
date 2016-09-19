@@ -33,16 +33,26 @@ let App = React.createClass({
     // console.log('state:', this.state);
   },
 
-  voteUp(id) {
-    const { movies } = this.state;
-    
-    console.log('up', id);
-
-
+  changeState(newState) {
+    this.setState({
+      Movies: newState
+    })
   },
 
-  voteDown(id) {
-    console.log('down', id);
+  voteUp(index) {
+    let { Movies } = this.state;
+    let newMovies = Movies;
+    newMovies[index]["score"] += 1;
+    this.changeState(newMovies);
+    // console.log('up', id)
+  },
+
+  voteDown(index) {
+    let { Movies } = this.state;
+    let newMovies = Movies;
+    newMovies[index]["score"] -= 1;
+    this.changeState(newMovies);
+    // console.log('down', id);
   },
 
   render() {
@@ -55,8 +65,8 @@ let App = React.createClass({
           <td><img src={item.image} alt={item.title} className="pic"/></td>
           <td>{item.title}</td>
           <td>{item.score}</td>
-          <td><button onClick={() => {this.voteUp(item.id)}} className="btn btn-sm btn-default"><i className="fa fa-angle-double-up"></i></button></td>
-          <td><button onClick={() => {this.voteDown(item.id)}} className="btn btn-sm btn-default"><i className="fa fa-angle-double-down"></i></button></td>
+          <td><button onClick={() => {this.voteUp(index)}} className="btn btn-sm btn-default"><i className="fa fa-angle-double-up"></i></button></td>
+          <td><button onClick={() => {this.voteDown(index)}} className="btn btn-sm btn-default"><i className="fa fa-angle-double-down"></i></button></td>
         </tr>
       )
     })
